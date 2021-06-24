@@ -71,12 +71,8 @@ with Tee(cfg_model.nn.addFolderAndPrefix('TrainingResults-log')):
     dataset_train = data.dataset_train.to(device, dtype=torch.DoubleTensor)
     dataset_test  = data.dataset_test_list[0].to(device, dtype=torch.DoubleTensor)
 
-    # reduce dataset size if required (sometimes needed to be able to fit in the memory)
-    # dataset_train = dataset_train[:cfg_model.ds.datasetsize_train]
-    # dataset_test  = dataset_test[:cfg_model.ds.datasetsize_test]
-
     ''' ------------------------------------------------------------------------
-    Create new GP2 model object and load parameters if they exist
+    Create new NN model object and load parameters if they exist
     ------------------------------------------------------------------------ '''
 
     from torch import nn
@@ -120,7 +116,7 @@ with Tee(cfg_model.nn.addFolderAndPrefix('TrainingResults-log')):
     elif cfg_model.nn.train:
         print('\nTraining from scratch!')
     else:
-        raise Exception(f'No trained GP found at {cfg_model.nn.fileName}')
+        raise Exception(f'No trained NN found at {cfg_model.nn.fileName}')
 
 
     if cfg_model.nn.train:
@@ -189,18 +185,6 @@ with Tee(cfg_model.nn.addFolderAndPrefix('TrainingResults-log')):
         if cfg_model.nn.saveModel:
             torch.save(model.state_dict(), cfg_model.nn.fileName)
             print(f'\nNN SAVED to {cfg_model.nn.fileName}\n')
-        
-        # do a quick performance evaluation on the test dataset
-        # model.eval()
-        # perf_string, perf_dict = evalPredictionAccuracy(
-        #     model, 
-        #     dataset_test, 
-        #     (sgp.QUANT.ddq|sgp.QUANT.dqn|sgp.QUANT.qn) if data.contact else (sgp.QUANT.ddqa|sgp.QUANT.dqan|sgp.QUANT.qan)
-        # )
-        # with open(cfg_model.nn.addFolderAndPrefix('TrainingResults-text'), 'w') as f:
-        #     f.write(perf_string)
-        # torch.save(perf_dict, cfg_model.nn.addFolderAndPrefix('TrainingResults-dict'))
-
 
 ''' ------------------------------------------------------------------------
 Eval Prediction

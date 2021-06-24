@@ -9,3 +9,21 @@ Warning: qIndex of joint lbr_iiwa_joint_6 is None, setting it to tensor([5])
 Warning: qIndex of joint lbr_iiwa_joint_7 is None, setting it to tensor([6])
 
 Training from scratch!
+
+Using device: cuda
+Warning: qIndex of joint lbr_iiwa_joint_1 is None, setting it to tensor([0])
+Warning: qIndex of joint lbr_iiwa_joint_2 is None, setting it to tensor([1])
+Warning: qIndex of joint lbr_iiwa_joint_3 is None, setting it to tensor([2])
+Warning: qIndex of joint lbr_iiwa_joint_4 is None, setting it to tensor([3])
+Warning: qIndex of joint lbr_iiwa_joint_5 is None, setting it to tensor([4])
+Warning: qIndex of joint lbr_iiwa_joint_6 is None, setting it to tensor([5])
+Warning: qIndex of joint lbr_iiwa_joint_7 is None, setting it to tensor([6])
+
+Using device: cuda
+Warning: qIndex of joint lbr_iiwa_joint_1 is None, setting it to tensor([0])
+Warning: qIndex of joint lbr_iiwa_joint_2 is None, setting it to tensor([1])
+Warning: qIndex of joint lbr_iiwa_joint_3 is None, setting it to tensor([2])
+Warning: qIndex of joint lbr_iiwa_joint_4 is None, setting it to tensor([3])
+Warning: qIndex of joint lbr_iiwa_joint_5 is None, setting it to tensor([4])
+Warning: qIndex of joint lbr_iiwa_joint_6 is None, setting it to tensor([5])
+Warning: qIndex of joint lbr_iiwa_joint_7 is None, setting it to tensor([6])

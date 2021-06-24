@@ -1,29 +1,18 @@
-'''
-This script trains the parameters of a differentiable Multi Rigid Body dynamical model using RMSE loss on the generated KUKA-surf dataset.
+''' This script trains the parameters of a differentiable Multi Rigid Body dynamical model 
+using RMSE loss on the generated KUKA-surf dataset.
 
 At the beginning of the learning, we introduce an error on the end-effector mass and CoG.
 '''
 
 import os, sys, importlib
 sys.path.append( os.path.join( os.path.dirname(__file__), os.path.pardir ) )
-import gc
-import math
-import time
-from collections import ChainMap, namedtuple
-from datetime import date, datetime
-from enum import Enum, auto
-from typing import List
 import dill
-import gpytorch
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy
 import torch
-from tqdm import tqdm
 import sgp.sgp as sgp
 from utils.evalGPplots import *
 from utils.Tee import Tee
-from scipy.spatial.transform import Rotation as R
 from MBD_simulator_torch.classes.RigidBody import *
 from MBD_simulator_torch.classes.BodyOnSurfaceBilateralConstraint import *
 from MBD_simulator_torch.classes.MultiRigidBody import *
@@ -52,7 +41,7 @@ if len(sys.argv) >=3:
     cfg_model   = importlib.import_module(sys.argv[2])
 else:
     cfg_dataset = importlib.import_module('results.KUKA-surf-dataset.config_KUKA')
-    cfg_model   = importlib.import_module('results.KUKA-surf-dataset.exp_mbd.config_ML')
+    cfg_model   = importlib.import_module('results.KUKA-surf-dataset.exp_learn_massCoG_alongside.config_ML')
 
 
 with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
@@ -72,13 +61,9 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
     # convert dataset to torch and move to right device
     dataset_train = data.dataset_train.to(device, dtype=torch.DoubleTensor)
     dataset_test  = data.dataset_test_list[0].to(device, dtype=torch.DoubleTensor)
-
-    # reduce dataset size if required (sometimes needed to be able to fit in the memory)
-    # dataset_train = dataset_train[:cfg_model.ds.datasetsize_train]
-    # dataset_test  = dataset_test[:cfg_model.ds.datasetsize_test]
-
+    
     ''' ------------------------------------------------------------------------
-    Create new GP2 model object and load parameters if they exist
+    Create new MBD model object and load parameters if they exist
     ------------------------------------------------------------------------ '''
 
     from torch import nn
@@ -112,7 +97,7 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
 
 
     '''------------------------------------------------------------------------
-    Create error for some parameters that are meant to be learned alongside the GP 
+    Create error for some parameters that are meant to be learned
     ------------------------------------------------------------------------'''
     # store initial hyper-parameter configuration
 
@@ -148,7 +133,7 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
         print('\nTraining from scratch!')
         iter_init = 0
     else:
-        raise Exception(f'No trained GP found at {cfg_model.mbd.fileName}')
+        raise Exception(f'No trained model found at {cfg_model.mbd.fileName}')
 
     '''------------------------------------------------------------------------
     Store pointers for learning history
@@ -166,7 +151,7 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
 
         sgp.cleanGPUcache()
 
-        # set GP to training mode (prediction outputs prior)
+        # switch to training mode (prediction outputs prior)
         model.train()
 
         # Use the adam optimizer
@@ -239,6 +224,32 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
             dill.dump(learningHistory, f)
 
 
+''' ------------------------------------------------------------------------
+Eval learning progress
+------------------------------------------------------------------------ '''
+
+# update Dict recursively
+learningHistory = Dict(learningHistory)
+
+fig, ax = plt.subplots(3,1,figsize=(6,5),sharex=True)
+# plot kin. parameter errors in %
+ax[0].grid(True)
+for k, v in learningHistory.params.items():
+    param_error = np.array(list(v.history.values())) - v.true
+    ax[0].plot( list(v.history.keys()), param_error, '--', label=k )
+ax[0].legend(loc='upper left', bbox_to_anchor=(1.05, 1))
+# plot mse
+ax[1].grid(True)
+ax[1].plot( list(learningHistory.mse.keys()), list(learningHistory.mse.values()), '-', label='mse' )
+ax[1].legend(loc='upper left', bbox_to_anchor=(1.05, 1))
+# MAE error range
+MAE_v = np.array(list(learningHistory.MAE.values()))
+MAE_it = list(learningHistory.MAE.keys())
+ax[2].plot(MAE_it, MAE_v)
+ax[2].legend([f'{i}' for i in range(data.nq)],loc='upper left', bbox_to_anchor=(1.05, 1))
+plt.tight_layout()
+if cfg_model.log.saveImages: fig.savefig( cfg_model.mbd.addFolderAndPrefix('learning-progress.pdf'), dpi=cfg_model.log.dpi)
+if cfg_model.log.showImages: plt.show()
 
 
 ''' ------------------------------------------------------------------------
@@ -279,9 +290,3 @@ if cfg_model.mbd.eval:
     if cfg_model.log.saveImages: 
         fig1.savefig( cfg_model.mbd.addFolderAndPrefix('evalPrediction.pdf'), dpi=cfg_model.log.dpi)
     if cfg_model.log.showImages: plt.show()
-    
-    # fig3 = evalConstraintSatisfaction( model, dataset_train, dataset_test )
-    # if cfg_model.log.saveImages: fig3.savefig( cfg_model.mbd.addFolderAndPrefix('ConstraintError.pdf'), dpi=cfg_model.log.dpi)
-    # if cfg_model.log.showImages: plt.show()
-    # print('...finished')
-

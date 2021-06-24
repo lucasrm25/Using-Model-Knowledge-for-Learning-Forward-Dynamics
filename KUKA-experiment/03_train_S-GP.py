@@ -1,5 +1,4 @@
-'''
-This scripts trains a Structured GP (S-GP) on the generated KUKA-surf dataset.
+''' This scripts trains a Structured GP (S-GP) on the generated KUKA-surf dataset.
 '''
 
 import os, sys, importlib
@@ -49,8 +48,8 @@ if len(sys.argv) >=3:
     cfg_model   = importlib.import_module(sys.argv[2])
 else:
     cfg_dataset = importlib.import_module('results.KUKA-surf-dataset.config_KUKA')
-    # cfg_model   = importlib.import_module('results.KUKA-surf-dataset.exp_MAEvsTrainpoints_6.config_ML')
-    cfg_model   = importlib.import_module('results.KUKA-surf-dataset.exp_comp_gp-sgp-nn-mbd.config_ML')
+    cfg_model   = importlib.import_module('results.KUKA-surf-dataset.exp_MAEvsTrainpoints.config_ML')
+    # cfg_model   = importlib.import_module('results.KUKA-surf-dataset.exp_comp_gp-sgp-nn-mbd.config_ML')
 
 
 
@@ -77,7 +76,7 @@ with Tee(cfg_model.s_gp.addFolderAndPrefix('TrainingResults-log')):
     dataset_test  = dataset_test[:cfg_model.ds.datasetsize_test]
 
     ''' ------------------------------------------------------------------------
-    Create new GP2 model object and load parameters if they exist
+    Create new SGP model object and load parameters if they exist
     ------------------------------------------------------------------------ '''
 
     model = sgp.SGPModel(

@@ -28,7 +28,6 @@ from MBD_simulator_torch.classes.BodyOnSurfaceBilateralConstraint import *
 from MBD_simulator_torch.classes.MultiRigidBody import *
 from MBD_simulator_torch.classes.RotationalJoint import *
 import sgp.sgp as sgp
-# from addict import Dict
 
 # setup print options
 np.set_printoptions(precision=4,threshold=1000,linewidth=500,suppress=True)
@@ -73,7 +72,7 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
     dataset_test  = data.dataset_test_list[0].to(device, dtype=torch.DoubleTensor)
 
     ''' ------------------------------------------------------------------------
-    Create new GP2 model object and load parameters if they exist
+    Create new multi-body dynamics model object
     ------------------------------------------------------------------------ '''
 
     from torch import nn
@@ -104,25 +103,6 @@ with Tee(cfg_model.mbd.addFolderAndPrefix('TrainingResults-log')):
             return ddq
 
     model = MBD().to(device)
-
-
-    '''------------------------------------------------------------------------
-    Load Model if already exists
-    ------------------------------------------------------------------------'''
-
-    # load hyperparameters if provided file exists 
-    if os.path.isfile(cfg_model.mbd.fileName) and not cfg_model.mbd.trainFromScratch:
-        state_dict = torch.load(cfg_model.mbd.fileName, map_location=device)
-        model.load_state_dict(state_dict)
-        print('\nFound existing trained model! Loading parameters from this model!')
-        # load learning history
-        learningHistory = dill.load( open(cfg_model.mbd.addFolderAndPrefix('learningHistory'), 'rb')  )
-        iter_init = max(learningHistory.mse.keys()) +1
-    elif cfg_model.mbd.train:
-        print('\nTraining from scratch!')
-        iter_init = 0
-    else:
-        raise Exception(f'No trained GP found at {cfg_model.mbd.fileName}')
 
 
 ''' ------------------------------------------------------------------------

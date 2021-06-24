@@ -1,12 +1,9 @@
 ''' Configuration file for different learning approaches
 '''
 
-import sys, os
+import os
 import numpy as np
-from enum import Enum, auto
 from addict import Dict
-import math
-from scipy.spatial.transform import Rotation as R
 
 np.set_printoptions(precision=4,threshold=1000,linewidth=500,suppress=True)
 
@@ -49,17 +46,9 @@ nn.fileName 				    = nn.addFolderAndPrefix('hyperparams.nn')
 
 ''' Analytical model (Multi Body Dynamics / mbd) config'''
 mbd						        = Dict()
-mbd.train                       = True
 mbd.eval                        = True
 mbd.useGPU 				        = True
 mbd.saveModel 			        = True
-mbd.standardize                 = True
-mbd.trainFromScratch		    = False
-mbd.training_iterations 	    = 200
-mbd.batchsize                   = 200
-mbd.iterRestartOptimizer        = 200
-mbd.display_every_x_iter        = 20
-mbd.lr 					        = 0.2
 mbd.addFolderAndPrefix 	        = lambda filename: log.addFolder(f'MBD-' + filename)
 mbd.fileName 			        = mbd.addFolderAndPrefix('hyperparams.mbd')
 
@@ -76,7 +65,7 @@ gp.training_iterations 		    = 500
 gp.iterRestartOptimizer         = 100
 gp.display_every_x_iter 		= 20
 gp.lr 						    = 0.2
-gp.addFolderAndPrefix 		    = lambda filename: log.addFolder(f'GP-st{int(gp.standardize)}-muFa0-' + filename)
+gp.addFolderAndPrefix 		    = lambda filename: log.addFolder(f'GP-st{int(gp.standardize)}-' + filename)
 gp.fileName 					= gp.addFolderAndPrefix('hyperparams.gp')
 
 ''' Structured-GP config'''
