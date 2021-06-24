@@ -80,19 +80,12 @@ cfg_model = importlib.import_module('results.KUKA-surf-dataset.exp_comp_gp-sgp-n
 
 ## Installation
 
-This project is written 100% in python. The user is only required to install all python libraries used in this project.
+This project is written 100% in python. The user is only required to install all python libraries used in this project, given in [requirements.txt](requirements.txt)
 
-General libraries
-
+Some useful links:
 - [addict](https://github.com/mewwts/addict)
-
-PyBullet simulations can only be executed in a pip or virtualenv environment (it does not support conda)
-
 - [pybullet](https://github.com/bulletphysics/bullet3)
-
-For training Gaussian Processes, please use a conda environment with the following packages
-
-- [pytorch](https://pytorch.org/) >= 1.6
+- [pytorch](https://pytorch.org/)
 - [gpytorch](https://gpytorch.ai/)
 - [pytorch_cluster](https://github.com/rusty1s/pytorch_cluster)
 
