@@ -6,9 +6,9 @@ Inspired on the paper "Learning Constrained Dynamics with Gauss’ Principle adh
 
 Main S-GP implementation can be found here: [sgp/sgp.py](sgp/sgp.py).
 
-### How to execute the experiments
+## How to execute the experiments
 
-#### Generate Dataset
+### Generate Dataset
 
 Before starting the to train the models, it is necessary to generate the dataset, obtained from simulation.
 To do that, execute the script [01_simulate_KUKA_robot_arm.py](KUKA-experiment/01_simulate_KUKA_robot_arm.py), which requires, among other libraries, the pyBullet library installed.
@@ -19,7 +19,7 @@ Next, execute the script [02_generate_dataset.py](KUKA-experiment/02_generate_da
 
 <img src="/doc/images/pyBulletMovie.gif" alt="drawing" width="350"/>
 
-#### Mean Absolute Error vs. Number of training points
+### Mean Absolute Error vs. Number of training points
 
 In this experiment we compare the performance of a vanilla GP to the proposed Structured-GP w.r.t. to the number of training points used. Optionaly, an analytical model is used as a mean function to the S-GP.
 Execute the following main scripts to train the models
@@ -42,7 +42,7 @@ In addition, the option ```ds.datasetsize_train = 600``` lets you change the num
 
 <br>
 
-#### Learning end-effector mass and CoG alongside unmodeled forces
+### Learning end-effector mass and CoG alongside unmodeled forces
 
 Here, compare how the S-GP method performs when using a analytical multi-body dynamics model as a mean function, whose end-effector mass and CoG parameters are initially wrongly estimated. The S-GP approach aims at learning unmodeled friction forces alongside the analytical model parameters.
 
@@ -60,7 +60,7 @@ cfg_model = importlib.import_module('results.KUKA-surf-dataset.exp_learn_massCoG
 
 <br>
 
-#### Compare GP vs. S-GP vs Analytical Model vs. Neural Network
+### Compare GP vs. S-GP vs Analytical Model vs. Neural Network
 
 Execute the following main scripts to generate the results
 
@@ -78,7 +78,7 @@ cfg_model = importlib.import_module('results.KUKA-surf-dataset.exp_comp_gp-sgp-n
 <img src="/doc/images/compare-approaches-error.png" alt="drawing" width="600"/>
 
 
-### Installation
+## Installation
 
 This project is written 100% in python. The user is only required to install all python libraries used in this project.
 
@@ -97,9 +97,9 @@ For training Gaussian Processes, please use a conda environment with the followi
 - [pytorch_cluster](https://github.com/rusty1s/pytorch_cluster)
 
 
-### External Softwares
+## External Softwares
 
-#### urdf_parser_py
+### urdf_parser_py
 
 http://wiki.ros.org/urdfdom_py
 https://github.com/ros/urdf_parser_py
@@ -109,7 +109,7 @@ License: BSD
 Author(s): Thomas Moulard, David Lu, Kelsey Hawkins, Antonio El Khoury, Eric Cousineau, Ioan Sucan , Jackie Kay
 
 
-#### KUKA robot arm model
+### KUKA robot arm model
 
 https://github.com/bulletphysics/bullet3/tree/master/data/kuka_iiwa
 https://github.com/bulletphysics/bullet3
