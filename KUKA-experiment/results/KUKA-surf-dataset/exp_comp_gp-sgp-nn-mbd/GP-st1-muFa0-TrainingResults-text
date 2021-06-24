@@ -1,0 +1,18 @@
+Performance evaluated on 1000 test points: 
+
+Prediction performance: (RMSE)
+   ddq     : tensor([0.7295, 0.4368, 0.3036, 1.1295, 0.5532, 0.7487, 0.8369])
+   dqn     : tensor([0.0030, 0.0018, 0.0012, 0.0047, 0.0023, 0.0031, 0.0035])
+   qn      : tensor([1.2473e-05, 7.3907e-06, 5.0021e-06, 1.9560e-05, 9.5037e-06, 1.2827e-05, 1.4450e-05])
+Prediction performance: (MAE)
+   ddq     : tensor([0.5805, 0.2907, 0.2312, 0.8119, 0.3500, 0.5692, 0.6531])
+   dqn     : tensor([0.0024, 0.0012, 0.0009, 0.0034, 0.0014, 0.0023, 0.0027])
+   qn      : tensor([9.9359e-06, 4.8060e-06, 3.7594e-06, 1.4014e-05, 5.8213e-06, 9.7853e-06, 1.1220e-05])
+Uncertainty prediction performance: (% or predictions inside confidence region)
+   ddq     : tensor([0.7460, 0.9770, 0.9700, 0.5780, 0.9670, 0.8270, 0.7050])
+   dqn     : tensor([0.7670, 0.9770, 0.9690, 0.5830, 0.9680, 0.8340, 0.7270])
+   qn      : tensor([0.7670, 0.9770, 0.9690, 0.5830, 0.9680, 0.8340, 0.7270])
+Constraint satisfaction performance: abs(A @ ddq - b)
+   Mean    : 4.153e-02
+   Min     : 4.368e-05
+   Max     : 1.942e-01

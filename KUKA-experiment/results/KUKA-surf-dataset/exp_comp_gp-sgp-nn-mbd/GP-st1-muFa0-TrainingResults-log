@@ -1,0 +1,79 @@
+
+Using device: cuda
+Traceback (most recent call last):
+  File "/home/lucas/Desktop/11_Github/Masterthesis/project-paper/KUKA-experiment/03_train_GP.py", line 104, in <module>
+    raise Exception(f'No trained GP found at {cfg_model.gp.fileName}')
+Exception: No trained GP found at /home/lucas/Desktop/11_Github/Masterthesis/project-paper/KUKA-experiment/results/KUKA-surf-dataset/exp_comp_gp-sgp-nn-mbd/GP-st1-muFa0-hyperparams.sgp
+
+Using device: cuda
+
+Training from scratch!
+
+Parameter list:
+Name                                                         Type     Size                 True Value                     Constraint                                        
+----------------------------------------                     ------   ---------------      --------------------           ----------------------------------------          
+likelihood.raw_noise                                         Tensor   [7]                  0.0100 0.0100 0.0100 0.0100 0.0100 0.0100 0.0100 GreaterThan(1.000E-04)                            
+covar_module.SE_covar_module.0.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.0.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+covar_module.SE_covar_module.1.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.1.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+covar_module.SE_covar_module.2.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.2.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+covar_module.SE_covar_module.3.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.3.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+covar_module.SE_covar_module.4.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.4.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+covar_module.SE_covar_module.5.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.5.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+covar_module.SE_covar_module.6.raw_outputscale               Tensor   []                   0.6931                         Positive()                                        
+covar_module.SE_covar_module.6.base_kernel.raw_lengthscale   Tensor   [1, 21]              0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 0.6931 Positive()                                        
+
+
+Iter   1/5      log|K|:   -1762.58       |err|^2_{K^-1}:  957756.78      -mll:  481856.64
+Iter   2/5      log|K|:   -1427.23       |err|^2_{K^-1}:  708152.22      -mll:  357222.04
+Iter   3/5      log|K|:   -1260.68       |err|^2_{K^-1}:  523560.83      -mll:  265009.62
+Iter   4/5      log|K|:   -1271.80       |err|^2_{K^-1}:  395022.47      -mll:  200734.88
+Iter   5/5      log|K|:   -1442.70       |err|^2_{K^-1}:  308134.18      -mll:  157205.28
+
+Parameter list:
+Name                                                         Type     Size                 True Value                     Constraint                                        
+----------------------------------------                     ------   ---------------      --------------------           ----------------------------------------          
+likelihood.raw_noise                                         Tensor   [7]                  0.0100 0.0100 0.0100 0.0100 0.0100 0.0100 0.0100 GreaterThan(1.000E-04)                            
+covar_module.SE_covar_module.0.raw_outputscale               Tensor   []                   1.2626                         Positive()                                        
+covar_module.SE_covar_module.0.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2712 1.2922 1.2891 1.2909 1.2854 1.2903 1.2712 1.2834 1.2845 1.2781 1.2821 1.2817 1.2809 1.2831 1.2661 1.2835 1.2663 1.2840 1.2789 1.2779 1.2709 Positive()                                        
+covar_module.SE_covar_module.1.raw_outputscale               Tensor   []                   1.2656                         Positive()                                        
+covar_module.SE_covar_module.1.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2753 1.3081 1.2926 1.3053 1.3041 1.3028 1.2760 1.2558 1.2883 1.2779 1.2864 1.2828 1.2847 1.2562 1.2832 1.2881 1.2837 1.2919 1.2874 1.2805 1.2720 Positive()                                        
+covar_module.SE_covar_module.2.raw_outputscale               Tensor   []                   1.2657                         Positive()                                        
+covar_module.SE_covar_module.2.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2773 1.3004 1.2897 1.2964 1.2915 1.2947 1.2769 1.2643 1.2826 1.2725 1.2804 1.2885 1.2788 1.2657 1.2767 1.2813 1.2776 1.2929 1.2790 1.2843 1.2807 Positive()                                        
+covar_module.SE_covar_module.3.raw_outputscale               Tensor   []                   1.2655                         Positive()                                        
+covar_module.SE_covar_module.3.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2687 1.3060 1.2893 1.3018 1.3023 1.2988 1.2692 1.2378 1.2869 1.2741 1.2836 1.2811 1.2812 1.2388 1.2822 1.2825 1.2819 1.2860 1.2849 1.2768 1.2708 Positive()                                        
+covar_module.SE_covar_module.4.raw_outputscale               Tensor   []                   1.2870                         Positive()                                        
+covar_module.SE_covar_module.4.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2609 1.2354 1.2545 1.2435 0.5313 1.2489 1.2556 1.2961 1.2608 1.2915 1.2900 1.2592 1.2938 1.2979 0.5556 0.5750 0.7369 1.2887 0.6189 1.2628 1.2873 Positive()                                        
+covar_module.SE_covar_module.5.raw_outputscale               Tensor   []                   1.2647                         Positive()                                        
+covar_module.SE_covar_module.5.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2673 1.3043 1.2884 1.2996 1.3013 1.2966 1.2676 1.2323 1.2858 1.2732 1.2819 1.2815 1.2794 1.2332 1.2828 1.2798 1.2821 1.2834 1.2845 1.2760 1.2713 Positive()                                        
+covar_module.SE_covar_module.6.raw_outputscale               Tensor   []                   1.2590                         Positive()                                        
+covar_module.SE_covar_module.6.base_kernel.raw_lengthscale   Tensor   [1, 21]              1.2621 1.2884 1.2818 1.2862 1.2808 1.2850 1.2622 1.2716 1.2831 1.2727 1.2795 1.2776 1.2775 1.2715 1.2604 1.2765 1.2572 1.2752 1.2759 1.2717 1.2691 Positive()                                        
+
+
+
+GP SAVED to /home/lucas/Desktop/11_Github/Masterthesis/project-paper/KUKA-experiment/results/KUKA-surf-dataset/exp_comp_gp-sgp-nn-mbd/GP-st1-muFa0-hyperparams.sgp
+
+Performance evaluated on 1000 test points: 
+
+Prediction performance: (RMSE)
+   ddq     : tensor([0.7295, 0.4368, 0.3036, 1.1295, 0.5532, 0.7487, 0.8369])
+   dqn     : tensor([0.0030, 0.0018, 0.0012, 0.0047, 0.0023, 0.0031, 0.0035])
+   qn      : tensor([1.2473e-05, 7.3907e-06, 5.0021e-06, 1.9560e-05, 9.5037e-06, 1.2827e-05, 1.4450e-05])
+Prediction performance: (MAE)
+   ddq     : tensor([0.5805, 0.2907, 0.2312, 0.8119, 0.3500, 0.5692, 0.6531])
+   dqn     : tensor([0.0024, 0.0012, 0.0009, 0.0034, 0.0014, 0.0023, 0.0027])
+   qn      : tensor([9.9359e-06, 4.8060e-06, 3.7594e-06, 1.4014e-05, 5.8213e-06, 9.7853e-06, 1.1220e-05])
+Uncertainty prediction performance: (% or predictions inside confidence region)
+   ddq     : tensor([0.7460, 0.9770, 0.9700, 0.5780, 0.9670, 0.8270, 0.7050])
+   dqn     : tensor([0.7670, 0.9770, 0.9690, 0.5830, 0.9680, 0.8340, 0.7270])
+   qn      : tensor([0.7670, 0.9770, 0.9690, 0.5830, 0.9680, 0.8340, 0.7270])
+Constraint satisfaction performance: abs(A @ ddq - b)
+   Mean    : 4.153e-02
+   Min     : 4.368e-05
+   Max     : 1.942e-01
+
