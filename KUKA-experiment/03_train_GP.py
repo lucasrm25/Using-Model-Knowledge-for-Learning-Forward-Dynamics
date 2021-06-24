@@ -5,21 +5,10 @@ The GP inputs are the 7 joint positions, velocities and torques, while outputs a
 
 import os, sys, importlib
 sys.path.append( os.path.join( os.path.dirname(__file__), os.path.pardir ) )
-import gc
-import math
-import time
-from collections import ChainMap, namedtuple
-from datetime import date, datetime
-from enum import Enum, auto
-from typing import List
 import dill
-import gpytorch
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy
 import torch
-from tqdm import tqdm
-from addict import Dict
 import sgp.sgp as sgp
 from utils.evalGPplots import *
 from utils.Tee import Tee

@@ -5,20 +5,10 @@ The NN inputs are the 7 joint positions, velocities and torques, while outputs a
 
 import os, sys, importlib
 sys.path.append( os.path.join( os.path.dirname(__file__), os.path.pardir ) )
-import gc
-import math
-import time
-from collections import ChainMap, namedtuple
-from datetime import date, datetime
-from enum import Enum, auto
-from typing import List
 import dill
-import gpytorch
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy
 import torch
-from tqdm import tqdm
 import sgp.sgp as sgp
 from utils.evalGPplots import *
 from utils.Tee import Tee
@@ -27,7 +17,6 @@ from MBD_simulator_torch.classes.RigidBody import *
 from MBD_simulator_torch.classes.BodyOnSurfaceBilateralConstraint import *
 from MBD_simulator_torch.classes.MultiRigidBody import *
 from MBD_simulator_torch.classes.RotationalJoint import *
-# from addict import Dict
 
 # setup print options
 np.set_printoptions(precision=4,threshold=1000,linewidth=500,suppress=True)
