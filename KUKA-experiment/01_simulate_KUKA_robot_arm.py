@@ -254,7 +254,6 @@ plt.title('Projected trajectory on the surface')
 plt.axis('equal')
 plt.grid(True)
 plt.tight_layout()
-plt.show()
 if cfg.log.saveImages: fig.savefig( cfg.log.addFolder('planned-OpSp-trajectory-projected-surf.pdf'), dpi=cfg.log.dpi)
 if cfg.log.showImages: plt.show()
 

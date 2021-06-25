@@ -28,8 +28,8 @@ class ControlMode(Enum):
 ''' ---- Log config ----'''
 log								= Dict()
 log.saveSimResults 	    		= True
-log.saveImages 		    		= True
-log.showImages		    		= False
+log.saveImages 		    		= False
+log.showImages		    		= True
 log.saveVideo		    		= False	
 log.dpi				    		= 300 		# image resolution
 log.resultsFolder       		= pwd		# main folder where results will be saved
@@ -119,7 +119,7 @@ camera.targetPosition   		= [-0.012065, -0.004299, -0.3839992]
 ''' ---- trajectory planning config ----'''
 trajplan 						= Dict()
 trajplan.ddx_max        		= 0.5
-trajplan.numTrajPoints  		= 300 # 20, 300             # number of trajectory points to sample
+trajplan.numTrajPoints  		= 20 # 20, 300             # number of trajectory points to sample
 trajplan.dtRange        		= np.array([0.5,1.0])       # range for the traveling time (point-to-point)
 trajplan.xy_Box       			= np.array([				# x-y area where the end-effector will 
 									[-0.5, 0.4], 			# lower-left corner
