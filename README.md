@@ -66,7 +66,7 @@ and make sure the configuration file [exp_learn_massCoG_alongside/config_ML.py](
 cfg_model = importlib.import_module('results.KUKA-surf-dataset.exp_learn_massCoG_alongside.config_ML')
 ```
 
-<img src="/doc/images/kin-param-learning-progress-mean.png" alt="drawing" width="300"/>
+<img src="/doc/images/kin-param-learning-progress-mean.png" alt="drawing" width="350"/>
 
 <br>
 
