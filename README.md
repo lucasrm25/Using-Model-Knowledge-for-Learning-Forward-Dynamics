@@ -1,8 +1,17 @@
-# Using Model Knowledge for Learning Forward Dynamics
+# Using Physics Knowledge for Learning Rigid-body Forward Dynamics with Gaussian Process Force Priors
 
-Code related to the paper "Using Model Knowledge for Learning Forward Dynamics" submitted to the Conference on Robot Learning (CoRL) 2021.
+Code related to the [paper "Using Physics Knowledge for Learning Rigid-body Forward Dynamics with Gaussian Process Force Priors"](https://openreview.net/pdf?id=50523z0PALg) accepted at the Conference on Robot Learning (CoRL) 2021.
 
-Inspired on the paper "Learning Constrained Dynamics with Gauss’ Principle adhering Gaussian Processes" - A. Rene Geist and Sebastian Trimpe.
+<br>
+
+<img src="/doc/images/intro_image-v3.png" alt="drawing" width="700"/>
+
+
+<br>
+
+<br>
+
+<!-- Inspired on the paper "Learning Constrained Dynamics with Gauss’ Principle adhering Gaussian Processes" - A. Rene Geist and Sebastian Trimpe. -->
 
 Main S-GP implementation can be found here: [sgp/sgp.py](sgp/sgp.py).
 
@@ -15,9 +24,10 @@ To do that, execute the script [01_simulate_KUKA_robot_arm.py](KUKA-experiment/0
 
 This will execute the simulation and save the simulation results to ```KUKA-experiment/results/KUKA-surf-dataset/simdata_raw.dat```. The name and location of the file, as well as many other simulation settings can be changed in the configuration file [config_KUKA.py](KUKA-experiment/results/KUKA-surf-dataset/config_KUKA.py).
 
-Next, execute the script [02_generate_dataset.py](KUKA-experiment/02_generate_dataset.py) that generates a dataset file ```KUKA-experiment/results/KUKA-surf-dataset/simdata.dat```. We are now ready to train the proposed learning methods.
-
 <img src="/doc/images/pyBulletMovie.gif" alt="drawing" width="350"/>
+<img src="/doc/images/planned-OpSp-trajectory-projected-surf.png" alt="drawing" width="350"/>
+
+Next, execute the script [02_generate_dataset.py](KUKA-experiment/02_generate_dataset.py) that generates a dataset file ```KUKA-experiment/results/KUKA-surf-dataset/simdata.dat```. We are now ready to train the proposed learning methods.
 
 ### Mean Absolute Error vs. Number of training points
 
@@ -37,8 +47,8 @@ Inside the config_ML file, there is an option ```s_gp.use_Fa_mean = False```, th
 In addition, the option ```ds.datasetsize_train = 600``` lets you change the number of traning points to be used by the different ```GP``` approaches during training.
 
 
-<img src="/doc/images/MAE-vs-nbr_training_samples.png" alt="drawing" width="350"/>
-<img src="/doc/images/const_viol-vs-nbr_training_samples.png" alt="drawing" width="350"/>
+<img src="/doc/images/MAE-vs-nbr_training_samples-with-38.png" alt="drawing" width="350"/>
+<img src="/doc/images/const_viol-vs-nbr_training_samples-with-38.png" alt="drawing" width="350"/>
 
 <br>
 
@@ -56,7 +66,7 @@ and make sure the configuration file [exp_learn_massCoG_alongside/config_ML.py](
 cfg_model = importlib.import_module('results.KUKA-surf-dataset.exp_learn_massCoG_alongside.config_ML')
 ```
 
-<img src="/doc/images/kin-param-learning-progress.png" alt="drawing" width="300"/>
+<img src="/doc/images/kin-param-learning-progress-mean.png" alt="drawing" width="300"/>
 
 <br>
 
